@@ -44,6 +44,17 @@ public class LambdaExamples
         MyFunction2 myFunction2 = (text1, text2) -> logger.info(text1 + text2);
         myFunction2.application2Param("Hello Function Body, ", "with 2 parameters");
 
+        //2 parameters with return type String
+        MyFunction2String myFunction2String = (text1, text2) -> {
+            return (text1 + " + " +  text2);
+        };
+        String returnValue = myFunction2String.application2ParamString("hello function body, with 2 parameters", "return type String");
+        logger.info(returnValue);
+
+        MyFunction2String myFunction2String2 = myFunction2String;
+        String returnValue2 = myFunction2String2.application2ParamString("hello 2nd function body, with 2 parameters","return type String");
+        logger.info(returnValue2);
+
 
 
 
