@@ -1,10 +1,17 @@
 package com.nk.java;
 
-import java.io.FileNotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class LambdaExamples2 {
+
+    private static final Logger logger = LoggerFactory.getLogger(LambdaExamples2.class); //static logger instance
+
+
+
     public static void main(String[] args) throws IOException {
 
         //Java Lambda expression can implement interfaces with
@@ -14,10 +21,7 @@ public class LambdaExamples2 {
 
 
         //lambda
-        MyInterface MyInterface = (String text) -> {
-            System.out.println(text);
-
-        };
+        MyInterface MyInterface = (String text) -> logger.info(text);
 
         MyInterface.printIt("hello world");
 
