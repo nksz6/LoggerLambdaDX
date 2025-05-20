@@ -11,25 +11,13 @@ public class LambdaExamples
 
     public static void main( String[] args )
     {
-
-        //anonymous implementation of comparator
-        Comparator<String> stringComparatorAnonymous = new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.compareTo(o2);
-            }
-        };
-        int comparison = stringComparatorAnonymous.compare("hello", "world");
-        logger.info("comparison 1 (anonymous) result: {}", comparison);
-
-
         //lambda implementation of comparator
-        Comparator<String> stringComparatorLambda = 
-            (o1, o2) -> { return o1.compareTo(o2); //java already knows o1 and o2 are strings so the type can be omitted in the lambda implementation
-        }; //brackets can also be omitted since its only doing one thing, along with 'return' statement
+        Comparator<String> stringComparatorLambda =
+            (o1, o2) ->  o1.compareTo(o2); //java already knows o1 and o2 are strings so the type can be omitted in the lambda implementation
+             //brackets can also be omitted since its only doing one thing, along with 'return' statement
 
-        int comparison2 = stringComparatorLambda.compare("hello", "world");
-        logger.info("comparison 2 (lambda) result: {}", comparison2);
+        int comparison = stringComparatorLambda.compare("hello", "world");
+        logger.info("comparison 1 (lambda) result: {}", comparison);
 
 
         //0 parameters
@@ -41,13 +29,11 @@ public class LambdaExamples
         myFunction1.application1Param("Hello Function Body, with 1 parameter");
 
         //2 parameters
-        MyFunction2 myFunction2 = (text1, text2) -> logger.info(text1 + text2);
+        MyFunction2 myFunction2 = (text1, text2) -> logger.info("{} {}", text1, text2);
         myFunction2.application2Param("Hello Function Body, ", "with 2 parameters");
 
         //2 parameters with return type String
-        MyFunction2String myFunction2String = (text1, text2) -> {
-            return (text1 + " + " +  text2);
-        };
+        MyFunction2String myFunction2String = (text1, text2) -> text1 + " + " +  text2;
         String returnValue = myFunction2String.application2ParamString("hello function body, with 2 parameters", "return type String");
         logger.info(returnValue);
 
